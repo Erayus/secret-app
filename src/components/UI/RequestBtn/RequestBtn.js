@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import sirenSound from '../../../sirensound.mp3';
+import classes from './RequestBtn.module.css';
 
 class RequestBtn extends Component  {
     state = {
@@ -13,15 +14,15 @@ class RequestBtn extends Component  {
         });
         switch (this.props.btnType) {
             case 'Siren':
-                if (!this.state.isSirenPlaying){
+                if (!this.state.isPlaying){
                     let audio = this.state.sirenAudio;
                     audio.src = sirenSound;
                     this.setState({sirenAudio: audio});
-                    this.setState({isSirenPlaying: true});
+                    this.setState({isPlaying: true});
                     this.state.sirenAudio.play();
                 }else {
                     this.state.sirenAudio.pause();
-                    this.setState({isSirenPlaying: false})
+                    this.setState({isPlaying: false})
                 }
                 break
             default:
@@ -34,11 +35,17 @@ class RequestBtn extends Component  {
         switch (this.props.btnType) {
             case 'Siren':
                 button = (
-                <button className={["SirenBtn", this.state.isPlaying ? "Playing" : null].join(' ')} onClick={this.clickHandler}>
-                    {this.state.isSirenPlaying ? 'NOTIFIED RAYMOND' : 'RAYMOND, I NEED HELP'}
-                </button>
+                    <button className={[classes.Btn, classes.SirenBtn, this.state.isPlaying ? classes.Playing : null].join(' ')} onClick={this.clickHandler}>
+                        {this.state.isPlaying ? 'NOTIFIED RAYMOND' : 'RAYMOND, I NEED HELP'}
+                    </button>
                 )
                 break;
+            case 'Boring':
+                button = (
+                    <button className={[classes.SirenBtn, this.state.isPlaying ? "Playing" : null].join(' ')} onClick={this.clickHandler}>
+                        {this.state.isPlaying ? 'NOTIFIED RAYMOND' : 'RAYMOND, I NEED HELP'}
+                    </button>
+                )
             default:
                 button = null;
                 break;
