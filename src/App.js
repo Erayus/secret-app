@@ -8,8 +8,7 @@ class App extends Component{
     isSirenPlaying: false,
     quotes: [
       'You look beautiful today. Have a lovely day!',
-      'Hope I was in there last night to keep the nightmares away'
-    
+      'Hope I was in there last night to keep the nightmares away. Great day em!'
     ]
   }
   activateSirenSound = () => {
@@ -29,6 +28,7 @@ class App extends Component{
         </header> 
         <div className="App-Body">
           <RequestBtn btnType='Siren'/>
+          <RequestBtn btnType='Boring'/>
         </div>
       </div>
     )

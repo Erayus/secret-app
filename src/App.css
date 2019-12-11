@@ -5,10 +5,11 @@
   color: white;
 }
 .App-Header{
-  min-height: 40vh;
+  min-height: 50vh;
 }
+
 .App-Body{
-  min-height: 60vh;
+  min-height: 77vh;
   background: white;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
