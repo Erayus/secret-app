@@ -3,14 +3,12 @@
   min-height: 100vh;
   background-color: #282c34;
   color: white;
-  padding: 30px 20px;
 }
 .App-Header{
-  min-height: 35vh;
+  min-height: 40vh;
 }
-
 .App-Body{
-  min-height: 65vh;
+  min-height: 60vh;
   background: white;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;

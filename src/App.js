@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import sirenSound from './sirensound.mp3';
+import RequestBtn from './components/UI/RequestBtn/RequestBtn';
 
-let siren = null;
 class App extends Component{
   state = {
-    sirenAudio: new Audio,
     isSirenPlaying: false,
     quotes: [
       'You look beautiful today. Have a lovely day!',
@@ -15,16 +13,7 @@ class App extends Component{
     ]
   }
   activateSirenSound = () => {
-    if (!this.state.isSirenPlaying){
-      let audio = this.state.sirenAudio;
-      audio.src = sirenSound;
-      this.setState({sirenAudio: audio});
-      this.setState({isSirenPlaying: true});
-      this.state.sirenAudio.play();
-    }else {
-      this.state.sirenAudio.pause();
-      this.setState({isSirenPlaying: false})
-    }
+   
   }
 
   render(){
@@ -34,14 +23,12 @@ class App extends Component{
 
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>Hi Jasmine <span style={{fontSize: '8px'}}>Ngáo</span></h1>
+        <header className="App-header" style={{paddingTop: '16px'}}>
+          <h1 >Hi Jasmine <span style={{fontSize: '8px'}}>Ngáo</span></h1>
           <p style={{fontSize: '16px'}}><em>{quote}</em></p>
         </header> 
         <div className="App-Body">
-          <button className={["SirenBtn", this.state.isSirenPlaying ? "Playing" : null].join(' ')} onClick={this.activateSirenSound}>
-            {this.state.isSirenPlaying ? 'NOTIFIED RAYMOND' : 'RAYMOND, I NEED HELP'}
-          </button>
+          <RequestBtn btnType='Siren'/>
         </div>
       </div>
     )
