@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import sirenSound from '../../../assets/sirensound.mp3';
 import classes from './RequestBtn.module.css';
 import axios from '../../../axios-email'; 
+import Modal from '../Modal/Modal';
+import nightJasmine from '../../../assets/Night_Jasmine.gif';
 class RequestBtn extends Component  {
     state = {
         sirenAudio: new Audio(),
         isPlaying: false,
-        isDisabled: false
+        isDisabled: false,
+        showModal: false
     }
 
     clickHandler = () => {
-        this.setState( prevState => {
-            return {isPlaying: !prevState.isPlaying}
-        });
         switch (this.props.btnType) {
             case 'Siren':
+                this.setState( prevState => {
+                    return {isPlaying: !prevState.isPlaying}
+                });
                 if (!this.state.isPlaying){
                     let audio = this.state.sirenAudio;
                     audio.src = sirenSound;
@@ -39,6 +42,9 @@ class RequestBtn extends Component  {
                 }
                 break
             case 'Boring':
+                this.setState( prevState => {
+                    return {isPlaying: !prevState.isPlaying}
+                });
                 this.setState({isDisabled: true});
                 if (!this.state.isPlaying){
                     const emailData = {
@@ -52,8 +58,11 @@ class RequestBtn extends Component  {
                 setTimeout(()=> {
                     this.setState({isDisabled: false, isPlaying: false});
                 }, 3000)
-                // this.sendEmail(emailData);
+                this.sendEmail(emailData);
                 }
+                break;
+            case 'Sleepy':
+                this.setState({showModal: true});
                 break;
             default:
                 return null
@@ -68,6 +77,10 @@ class RequestBtn extends Component  {
                     .catch(
                         (error) => console.log(error)
                     )
+    }
+
+    closeModal = () => {
+        this.setState({showModal: false})
     }
 
     render(){
@@ -87,12 +100,39 @@ class RequestBtn extends Component  {
                     </button>
                 )
                 break;
+            case 'Sleepy':
+                    button = (
+                        <button className={[classes.Btn, classes.SleepyBtn, this.state.isPlaying ? classes.Playing : null].join(' ')} onClick={this.clickHandler} disabled={this.state.isDisabled}>
+                            {this.state.isPlaying ? "NIGHTMARES, COME TO ME INSTEAD" : "RAYMOND, I'M SLEEPY"}
+                        </button>
+                    )
+                    break;
+            default:
+                button = null
+        }
+
+        let modalContent = null;
+        switch (this.props.btnType) {
+            case 'Siren':
+                break;
+            case 'Boring':
+                break;
+            case 'Sleepy':
+                modalContent = (
+                    <div>
+                        <h3>Nightmares, leave Jasmine alone. Come to me instead!</h3>
+                        <img src={nightJasmine} width="100%"/>
+                    </div>
+                    
+                );
+                break;
             default:
                 button = null
         }
         return (
             <div>
                 {button}
+                <Modal show={this.state.showModal} modalClosed={this.closeModal}>{modalContent}</Modal>
             </div>
         )
 }

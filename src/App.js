@@ -28,6 +28,7 @@ class App extends Component{
         <div className="App-Body">
           <RequestBtn btnType='Siren'/>
           <RequestBtn btnType='Boring'/>
+          <RequestBtn btnType='Sleepy'/>
         </div>
       </div>
     )

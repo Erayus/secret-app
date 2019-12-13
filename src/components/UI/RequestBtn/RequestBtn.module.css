@@ -16,7 +16,9 @@
 .BoringBtn{
     background: #3949ab;
 }
-
+.SleepyBtn{
+    background: #ff80ab;
+}
 .Playing{
     background: rgb(88, 72, 72) !important;
 }
