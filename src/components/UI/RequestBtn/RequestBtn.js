@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import sirenSound from '../../../sirensound.mp3';
+import sirenSound from '../../../assets/sirensound.mp3';
 import classes from './RequestBtn.module.css';
 import axios from '../../../axios-email'; 
 class RequestBtn extends Component  {
     state = {
         sirenAudio: new Audio(),
-        isPlaying: false
+        isPlaying: false,
+        isDisabled: false
     }
 
     clickHandler = () => {
@@ -34,18 +35,11 @@ class RequestBtn extends Component  {
                         message: 'Jasmine is in danger. Text or find her',
                         signature: 'From Ngao With Love'
                     }
-                    axios.post('', emailData)
-                    .then(
-                        (response) => console.log(response)
-                    )
-                    .catch(
-                        (error) => console.log(error)
-                    )
+                    this.sendEmail(emailData)
                 }
-
-
                 break
             case 'Boring':
+                this.setState({isDisabled: true});
                 if (!this.state.isPlaying){
                     const emailData = {
                         toAddress: 'raymondhieutran@gmail.com',
@@ -55,19 +49,25 @@ class RequestBtn extends Component  {
                         message: 'Jasmine is bored. Move your ass',
                         signature: 'From Ngao With Love'
                     }
-                    axios.post('', emailData)
+                setTimeout(()=> {
+                    this.setState({isDisabled: false, isPlaying: false});
+                }, 3000)
+                // this.sendEmail(emailData);
+                }
+                break;
+            default:
+                return null
+        }
+    }
+
+    sendEmail(emailData) {
+        axios.post('', emailData)
                     .then(
                         (response) => console.log(response)
                     )
                     .catch(
                         (error) => console.log(error)
                     )
-                }
-                
-                break;
-            default:
-                return null
-        }
     }
 
     render(){
@@ -82,7 +82,7 @@ class RequestBtn extends Component  {
                 break;
             case 'Boring':
                 button = (
-                    <button className={[classes.Btn, classes.BoringBtn, this.state.isPlaying ? classes.Playing : null].join(' ')} onClick={this.clickHandler}>
+                    <button className={[classes.Btn, classes.BoringBtn, this.state.isPlaying ? classes.Playing : null].join(' ')} onClick={this.clickHandler} disabled={this.state.isDisabled}>
                         {this.state.isPlaying ? "RAYMOND IS NOT A JOKE" : "RAYMOND, I'M BORED"}
                     </button>
                 )
