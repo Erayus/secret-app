@@ -120,10 +120,9 @@ class RequestBtn extends Component  {
             case 'Sleepy':
                 modalContent = (
                     <div>
-                        <h3>Nightmares, leave Jasmine alone. Come to me instead!</h3>
+                        <h3><em>Nightmares, leave Jasmine alone. Come to me instead.</em></h3>
                         <img src={nightJasmine} width="100%"/>
                     </div>
-                    
                 );
                 break;
             default:
