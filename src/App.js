@@ -6,12 +6,10 @@ class App extends Component{
   state = {
     isSirenPlaying: false,
     quotes: [
-      'Don’t be scared if a big fat man comes in to your room and stuffs you in a bag… I told Santa I want you for Christmas!!!',
+      'On the 24th, don’t be scared if a big fat man comes in to your room and stuffs you in a bag… I told Santa I want you for Christmas!!!',
       'Hey last time I was coding, I noticed on my keyboard that “u” and “i” are always together',
       "If you are tired, fall on me",
-      "Sao hôm nào cũng xinh thệ?",
-      'In my dictionary, there is no "gorgeous" word.....because you stole the definition of it',
-      ''
+      "Sao hôm nào cũng xinh thệ?"
     ]
   }
 
