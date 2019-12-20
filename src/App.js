@@ -6,12 +6,12 @@ class App extends Component{
   state = {
     isSirenPlaying: false,
     quotes: [
-      'Be a pineapple, stand tall, wear a crown and be sweet on the inside',
-      'You are not short, your height is just cute :)',
-      "If you are tired, I'm here for you",
-      "Sao hôm nay xinh thệ?",
+      'Don’t be scared if a big fat man comes in to your room and stuffs you in a bag… I told Santa I want you for Christmas!!!',
+      'Hey last time I was coding, I noticed on my keyboard that “u” and “i” are always together',
+      "If you are tired, fall on me",
+      "Sao hôm nào cũng xinh thệ?",
       'In my dictionary, there is no "gorgeous" word.....because you stole the definition of it',
-      'Nếu có thể, anh tham thêm 1 đời nữa được không?'
+      ''
     ]
   }
 
