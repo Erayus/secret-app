@@ -25,9 +25,12 @@ class App extends Component{
           <p style={{fontSize: '17px', padding: '0px 15px'}}><em>{quote}</em></p>
         </header> 
         <div className="App-Body">
-          <RequestBtn btnType='Siren'/>
           <RequestBtn btnType='Boring'/>
           <RequestBtn btnType='Sleepy'/>
+          <div className="mx-auto mt-2"  style={{width: "180px", border: "1px solid black" }}></div>
+          <div className="mt-3">
+            <RequestBtn  btnType='Siren'/>
+          </div>
         </div>
       </div>
     )

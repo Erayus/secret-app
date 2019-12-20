@@ -3,7 +3,11 @@ import sirenSound from '../../../assets/sirensound.mp3';
 import classes from './RequestBtn.module.css';
 import axios from '../../../axios-email'; 
 import Modal from '../Modal/Modal';
-import nightJasmine from '../../../assets/Night_Jasmine.gif';
+import nightJasmine from '../../../assets/see_you_in_my_dreams.gif';
+import nightJasmine1 from '../../../assets/goodnight.gif';
+import nightJasmine2 from '../../../assets/goodnight2.gif';
+
+
 class RequestBtn extends Component  {
     state = {
         sirenAudio: new Audio(),
@@ -118,10 +122,12 @@ class RequestBtn extends Component  {
             case 'Boring':
                 break;
             case 'Sleepy':
+                const goodnights = [nightJasmine, nightJasmine1, nightJasmine2];
+                const goodnightToday = goodnights[Math.floor(Math.random()*goodnights.length)]
                 modalContent = (
                     <div>
-                        <h3><em>Nightmares, leave Jasmine alone. Come to me instead.</em></h3>
-                        <img src={nightJasmine} width="100%"/>
+                        <h5><em>Nightmares, leave Jasmine alone! Come to me instead.</em></h5>
+                        <img src={goodnightToday} width="100%" />
                     </div>
                 );
                 break;
