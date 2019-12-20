@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  width: 100%;
   min-height: 100vh;
   background: url('https://tse4.mm.bing.net/th?id=OIP.Yb4zao-6QQqJ6eC4HxcvmAHaEo&pid=Api') no-repeat;
   background-size: contain;
@@ -11,11 +12,14 @@
 }
 
 .App-Body{
+  position: fixed;
+  width: 100%;
   min-height: 77vh;
   background: white;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   padding-top: 30px;
+  bottom: 0;
 }
 
 .App-logo {

@@ -20,7 +20,7 @@ class App extends Component{
 
     return (
       <div className="App">
-        <header className="App-header" style={{paddingTop: '16px'}}>
+        <header className="App-header" style={{paddingTop: '48px'}}>
           <h2 >Hi Jasmine <span style={{fontSize: '8px'}}>Ngáo</span></h2>
           <p style={{fontSize: '17px', padding: '0px 15px'}}><em>{quote}</em></p>
         </header> 
