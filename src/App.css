@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   min-height: 100vh;
+  background: url('https://tse4.mm.bing.net/th?id=OIP.Yb4zao-6QQqJ6eC4HxcvmAHaEo&pid=Api') no-repeat;
+  background-size: contain;
   background-color: #282c34;
   color: white;
 }
