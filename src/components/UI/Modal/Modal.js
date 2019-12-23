@@ -13,13 +13,10 @@ class Modal extends Component{
         console.log('did update!')
     }
     render() {
+        const modalClasses = [classes.Modal, this.props.show && classes.ModalOpen].join(' ');
         return (
             <React.Fragment>
-                <div className={classes.Modal}
-                     style={{
-                         transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
-                         opacity: this.props.show ? '1' : '0'
-                     }}
+                <div className={modalClasses}
                 >
                     {this.props.children}
                 </div>
