@@ -13,7 +13,7 @@ class Modal extends Component{
         console.log('did update!')
     }
     render() {
-        const modalClasses = [classes.Modal, this.props.show && classes.ModalOpen].join(' ');
+        const modalClasses = [classes.Modal, this.props.show ? classes.ModalOpen : null].join(' ');
         return (
             <React.Fragment>
                 <div className={modalClasses}

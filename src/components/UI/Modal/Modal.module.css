@@ -9,11 +9,12 @@
     box-sizing: border-box;
     color: black!important;
     border-radius: 4px;
-    opacity: 0;
+    display: none;
 }
 
 .ModalOpen{
-    animation: ModalOpening 0.3s forwards step-end;
+    display: block;
+    animation: ModalOpening 0.8s forwards;
 }
 
 @media (min-width: 600px) {
@@ -25,15 +26,15 @@
 
 @keyframes ModalOpening {
     0%{
-        transform: translateY(0%);
-        opacity: 0;
+        transform: translateY(-100%);
+        opacity: 0.5;
     }
-    80%{
-        transform: translateY(130%);
+    50%{
+        transform: translateY(30%);
         opacity: 0.7;
     }
     100%{
-        transform: translateY(100%);
+        transform: translateY(0%);
         opacity: 1;
     }
 }
