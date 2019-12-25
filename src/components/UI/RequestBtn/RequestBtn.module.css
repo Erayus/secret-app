@@ -19,11 +19,75 @@
 .SleepyBtn{
     background: #ff80ab;
 }
+.ChristmasBtn{
+    background: #c62828;
+}
 .Playing{
     background: rgb(88, 72, 72) !important;
 }
-  
- 
-  
+.Packs{
+    position: absolute;
+    opacity: 0;
+    top: 0;
+}
 
-  
+.Pack{
+    left: 10px;
+    animation: Dropping 8s linear 1s infinite forwards;
+}
+.Pack1{
+    left: 50px;
+    animation: Dropping 12s linear 4s infinite forwards;
+}
+.Pack2{
+    right: 0;
+    animation: Dropping 13s linear 9s infinite forwards;
+}
+.Pack3{
+    right: 40px;
+    animation: Dropping 14s linear 14s infinite forwards;
+}
+.Pack4{
+    right: 50px;
+    animation: Dropping 12s linear 18s infinite forwards;
+}
+.Pack5{
+    left: 20px;
+    animation: Dropping 14s linear 24s infinite forwards;
+}
+.Pack6{
+    left: 40px;
+    animation: Dropping 12s linear 28s infinite forwards;
+}
+.Pack7{
+    right: 10px;
+    animation: Dropping 12s linear 32s infinite forwards;
+}
+.Pack8{
+    left: 25px;
+    animation: Dropping 12s linear 35s infinite forwards;
+}
+.Pack9{
+    right: 10px;
+    animation: Dropping 12s linear 39s infinite forwards;
+}
+.Pack10{
+    right: 35px;
+    animation: Dropping 12s linear 44s infinite forwards;
+}
+.Pack11{
+    right:60px;
+    animation: Dropping 12s linear 50s infinite forwards;
+}
+
+@keyframes Dropping{
+    0% {
+        opacity: 1;
+        transform: translateY(0%)
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(300%);
+    }
+}
+

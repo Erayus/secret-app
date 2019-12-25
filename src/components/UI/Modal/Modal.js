@@ -1,6 +1,12 @@
 import React, {Component} from 'react'
 import classes from './Modal.module.css';
 import Backdrop from '../Backdrop/Backdrop';
+import CSSTransition from 'react-transition-group/CSSTransition'
+
+const animationTiming = {
+    enter: 800,
+    exit: 400
+}
 
 class Modal extends Component{
 
@@ -13,15 +19,27 @@ class Modal extends Component{
         console.log('did update!')
     }
     render() {
-        const modalClasses = [classes.Modal, this.props.show ? classes.ModalOpen : null].join(' ');
+        const modalClasses = [classes.Modal, this.props.show ? classes.ModalOpen : classes.ModalClose].join(' ');
         return (
-            <React.Fragment>
-                <div className={modalClasses}
+                <CSSTransition
+                    mountOnEnter
+                    unmountOnExit
+                    in={this.props.show}
+                    timeout={animationTiming}
+                    classNames={{
+                        enter: '',
+                        enterActive: classes.ModalOpen,
+                        exit: '',
+                        exitActive: classes.ModalClose
+                    }}
                 >
-                    {this.props.children}
-                </div>
-                <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
-            </React.Fragment>
+                    <React.Fragment>
+                        <div className={classes.Modal} style={{background: "url('https://image.freepik.com/free-vector/christmas-background-red_8608.jpg')"}}>
+                            {this.props.children}
+                        </div>
+                        <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
+                    </React.Fragment>  
+                </CSSTransition>
         )
     }
 

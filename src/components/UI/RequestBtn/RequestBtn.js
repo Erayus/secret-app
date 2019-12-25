@@ -6,14 +6,28 @@ import Modal from '../Modal/Modal';
 import nightJasmine from '../../../assets/see_you_in_my_dreams.gif';
 import nightJasmine1 from '../../../assets/goodnight.gif';
 import nightJasmine2 from '../../../assets/goodnight2.gif';
+import pack from '../../../assets/RaymondPack.jpg';
+import pack1 from '../../../assets/RaymondPack2.jpg';
+import pack2 from '../../../assets/RaymondPack3.jpg';
+import pack3 from '../../../assets/RaymondPack4.jpg'; 
+import pack4 from '../../../assets/RaymondPack5.jpg'; 
+import pack5 from '../../../assets/RaymondPack6.jpg'; 
+import pack6 from '../../../assets/RaymondPack7.jpg';
+import pack7 from '../../../assets/RaymondPack8.jpg'; 
+import pack8 from '../../../assets/RaymondPack9.jpg'; 
+import pack9 from '../../../assets/RaymondPack10.jpg'; 
+import pack10 from '../../../assets/RaymondPack11.jpg';
+import pack11 from '../../../assets/RaymondPack12.jpg';  
 
+import CSSTransition from 'react-transition-group/CSSTransition';
+import lastXmas from '../../../assets/lastxmas.mp3'
 
 class RequestBtn extends Component  {
     state = {
-        sirenAudio: new Audio(),
+        audio: new Audio(),
         isPlaying: false,
         isDisabled: false,
-        showModal: false
+        showModal: false,
     }
 
     clickHandler = () => {
@@ -23,13 +37,13 @@ class RequestBtn extends Component  {
                     return {isPlaying: !prevState.isPlaying}
                 });
                 if (!this.state.isPlaying){
-                    let audio = this.state.sirenAudio;
+                    let audio = this.state.audio;
                     audio.src = sirenSound;
-                    this.setState({sirenAudio: audio});
+                    this.setState({audio: audio});
                     this.setState({isPlaying: true});
-                    this.state.sirenAudio.play();
+                    this.state.audio.play();
                 }else {
-                    this.state.sirenAudio.pause();
+                    this.state.audio.pause();
                     this.setState({isPlaying: false})
                 }
 
@@ -68,6 +82,22 @@ class RequestBtn extends Component  {
             case 'Sleepy':
                 this.setState({showModal: true});
                 break;
+            case 'Christmas':
+                this.setState({showModal: true})
+                this.setState( prevState => {
+                    return {isPlaying: !prevState.isPlaying}
+                });
+                if (!this.state.isPlaying){
+                    let audio = this.state.audio;
+                    audio.src = lastXmas;
+                    this.setState({audio: audio});
+                    this.setState({isPlaying: true});
+                    this.state.audio.play();
+                }else {
+                    this.state.audio.pause();
+                    this.setState({isPlaying: false})
+                }
+                break;
             default:
                 return null
         }
@@ -85,6 +115,10 @@ class RequestBtn extends Component  {
 
     closeModal = () => {
         this.setState({showModal: false})
+        if (this.state.audio){
+            this.state.audio.pause();
+            this.setState({isPlaying: false})
+        }
     }
 
     render(){
@@ -111,10 +145,18 @@ class RequestBtn extends Component  {
                         </button>
                     )
                     break;
+            case 'Christmas':
+                button = (
+                    <button className={[classes.Btn, classes.ChristmasBtn, this.state.isPlaying ? classes.Playing : null].join(' ')} onClick={this.clickHandler} disabled={this.state.isDisabled}>
+                        {this.state.isPlaying ? "ENJOY THE SHOW" : "RAYMOND, IT'S CHRISTMAS'S EVE"}
+                    </button>
+                )
+                break;
             default:
                 button = null
         }
 
+        // MODAL CONTENT
         let modalContent = null;
         switch (this.props.btnType) {
             case 'Siren':
@@ -131,14 +173,32 @@ class RequestBtn extends Component  {
                     </div>
                 );
                 break;
+            case 'Christmas':
+                modalContent = (
+                    <div className={classes.XmasShow} style={{height: '100vh'}}>
+                        <img className={[classes.Packs, classes.Pack].join(' ')} src={pack} width="120" alt="Raymond's pack"/>
+                        <img className={[classes.Packs, classes.Pack1].join(' ')} src={pack1} width="150" alt="Raymond's pack1"/>
+                        <img className={[classes.Packs, classes.Pack2].join(' ')} src={pack2} width="140" alt="Raymond's pack2"/>
+                        <img className={[classes.Packs, classes.Pack3].join(' ')} src={pack3} width="160" alt="Raymond's pack3"/>
+                        <img className={[classes.Packs, classes.Pack4].join(' ')} src={pack4} width="160" alt="Raymond's pack4"/>
+                        <img className={[classes.Packs, classes.Pack5].join(' ')} src={pack5} width="140" alt="Raymond's pack5"/>
+                        <img className={[classes.Packs, classes.Pack6].join(' ')} src={pack6} width="150" alt="Raymond's pack6"/>
+                        <img className={[classes.Packs, classes.Pack7].join(' ')} src={pack7} width="130" alt="Raymond's pack7"/>
+                        <img className={[classes.Packs, classes.Pack8].join(' ')} src={pack8} width="120" alt="Raymond's pack8"/>
+                        <img className={[classes.Packs, classes.Pack9].join(' ')} src={pack9} width="160" alt="Raymond's pack9"/>
+                        <img className={[classes.Packs, classes.Pack10].join(' ')} src={pack10} width="140" alt="Raymond's pack10"/>
+                        <img className={[classes.Packs, classes.Pack11].join(' ')} src={pack11} width="150" alt="Raymond's pack11"/>
+                    </div>
+                )
+                break;
             default:
-                button = null
+                break;
         }
         return (
-            <div>
+            <React.Fragment>
                 {button}
                 <Modal show={this.state.showModal} modalClosed={this.closeModal}>{modalContent}</Modal>
-            </div>
+            </React.Fragment>
         )
 }
   
